@@ -20,7 +20,7 @@ public class GUIBoard implements ActionListener {
     
     private long start_time;
     private long end_time;
-
+//
     public GUIBoard(int level) { 
      
      MineLevel(level);
