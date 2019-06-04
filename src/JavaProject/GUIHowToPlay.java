@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-//manual
 public class GUIHowToPlay extends JPanel implements ActionListener{
 	JLabel lblNewLabel;
 	JButton btnNewButton;
