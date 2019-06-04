@@ -59,5 +59,7 @@ public class GUIGameWindow extends JFrame{
             GUIGameWindow ex = new GUIGameWindow();
             ex.setVisible(true);
         });
+
+       // GUIframe mainFrame = new MainFrame()
     }
 }

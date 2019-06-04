@@ -11,7 +11,6 @@ public class GUIShowRanking extends JPanel implements ActionListener {
    JPanel contentPane;
    JButton btnBack;
    JButton btnMenu;
-   //JButton testIO;
    
    String levels;
    int level;
@@ -28,27 +27,28 @@ public class GUIShowRanking extends JPanel implements ActionListener {
    }
    
    public void initUI() {
-      GUIScoreIO scorelist = new GUIScoreIO(level);
-      HashMap<String, Float> hm = new HashMap<String,Float> (scorelist.fileRead());
-      System.out.println("Open! with level " + levels);
-      
-      lblUsers = new JLabel[hm.size()];
-      
-      Iterator <String> usrscore = hm.keySet().iterator();
-      int i = 0;
-      
-      while (usrscore.hasNext()) {
-         String usrname = usrscore.next();
-         float scores = hm.get(usrname);
-         String line = i+1 + ". " + usrname + " " + scores;
-         System.out.println(line);
-         
-         if (line != null) {
-            i += 1;
-            lblUsers[i-1] = new JLabel(line);
-         }
-         
-      }
+	      GUIScoreIO scorelist = new GUIScoreIO(level);
+	      LinkedHashMap<String, Float> hm = new LinkedHashMap<String,Float> (scorelist.fileRead());
+	      System.out.println("Open! with level " + levels);
+	      
+	      lblUsers = new JLabel[hm.size()];
+	      
+	      Iterator <String> usrscore = hm.keySet().iterator();
+	      int i = 0;
+	      
+	      while (usrscore.hasNext()) {
+	         String usrname = usrscore.next();
+	         float scores = hm.get(usrname);
+	         String line = i+1 + ". " + usrname + " " + scores;
+	         System.out.println(line);
+	         
+	         if (line != null) {
+	            i += 1;
+	            lblUsers[i-1] = new JLabel(line);
+	         }
+	         
+	      }
+
       
       lblNewLabel = new JLabel(levels + " Top 3 Score");
       lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 25));
@@ -67,11 +67,13 @@ public class GUIShowRanking extends JPanel implements ActionListener {
      
       
       btnBack = new JButton("Back");
+      btnBack.setBackground(SystemColor.textHighlight);
       btnBack.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
       btnBack.setBounds(177, 235, 137, 49);
       add(btnBack);
       
       btnMenu = new JButton("Menu");
+      btnMenu.setBackground(SystemColor.textHighlight);
       btnMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
       btnMenu.setBounds(177, 296, 137, 49);
       add(btnMenu);
@@ -84,16 +86,9 @@ public class GUIShowRanking extends JPanel implements ActionListener {
    public void actionPerformed(ActionEvent evt) {
       GUIRanking showBack = new GUIRanking(contentPane);
        contentPane.add(showBack, "levels");
-       
-       //GUIInputRanking ipRank = new GUIInputRanking(contentPane,this.level ,(float)20.52);
-       //contentPane.add(ipRank, "inputs");
-       
+      
       Object src = evt.getSource();
-      /*
-      if (src == testIO) {
-         CardLayout cardLayout = (CardLayout) contentPane.getLayout();
-           cardLayout.show(contentPane, "inputs");
-      }*/
+     
       if (src == btnBack) {
          CardLayout cardLayout = (CardLayout) contentPane.getLayout();
            cardLayout.show(contentPane, "levels");

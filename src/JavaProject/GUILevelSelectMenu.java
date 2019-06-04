@@ -14,6 +14,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLayeredPane;
 import javax.swing.ImageIcon;
+import java.awt.SystemColor;
 
 public class GUILevelSelectMenu extends JPanel implements ActionListener{
    JButton btnBeginner;
@@ -36,21 +37,25 @@ public class GUILevelSelectMenu extends JPanel implements ActionListener{
       setLayout(null);
       
       btnBeginner = new JButton("Beginner");
+      btnBeginner.setBackground(SystemColor.textHighlight);
       btnBeginner.setFont(new Font("American Typewriter", Font.PLAIN, 16));
       btnBeginner.setBounds(169, 154, 153, 49);
       add(btnBeginner);
       
       btnIntermediate = new JButton("Intermediate");
+      btnIntermediate.setBackground(SystemColor.textHighlight);
       btnIntermediate.setFont(new Font("American Typewriter", Font.PLAIN, 16));
       btnIntermediate.setBounds(169, 225, 153, 49);
       add(btnIntermediate);
       
       btnAdvanced = new JButton("Advanced");
+      btnAdvanced.setBackground(SystemColor.textHighlight);
       btnAdvanced.setFont(new Font("American Typewriter", Font.PLAIN, 16));
       btnAdvanced.setBounds(169, 297, 153, 49);
       add(btnAdvanced);
       
-      btnBack = new JButton("Back");
+      btnBack = new JButton("Exit");
+      btnBack.setBackground(SystemColor.menu);
       btnBack.setFont(new Font("American Typewriter", Font.PLAIN, 16));
       btnBack.setBounds(169, 368, 153, 49);
       add(btnBack);

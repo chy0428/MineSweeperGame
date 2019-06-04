@@ -43,7 +43,8 @@ public class GUIHowToPlay extends JPanel implements ActionListener{
 		lblNewLabel_1.setBounds(270, 268, 200, 208);
 		add(lblNewLabel_1);
 		
-		JButton btnNewButton = new JButton("back");
+		JButton btnNewButton = new JButton("Exit");
+		btnNewButton.setBackground(SystemColor.textHighlight);
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -52,7 +53,7 @@ public class GUIHowToPlay extends JPanel implements ActionListener{
 			}
 		});
 		btnNewButton.setFont(new Font("American Typewriter", Font.PLAIN, 16));
-		btnNewButton.setBounds(30, 383, 138, 42);
+		btnNewButton.setBounds(16, 413, 133, 39);
 		add(btnNewButton);
 		btnNewButton.addActionListener(this);
 
