@@ -32,8 +32,9 @@ public class GUIScoreIO {
 		}
 		
 		//bubble sort
-		for (int i = 0; i < hm.size(); i++) {
-			for (int k = 0; k < hm.size()-i-1; k++) {
+		
+		for (int i = 1; i < hm.size()-1; i++) {
+			for (int k = 0; k < hm.size()-i; k++) {
 				if (scores[k] > scores[k+1]) {
 					float buf = scores[k];
 					scores[k] = scores[k+1];

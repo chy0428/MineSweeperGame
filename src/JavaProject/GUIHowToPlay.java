@@ -16,7 +16,6 @@ public class GUIHowToPlay extends JPanel implements ActionListener{
 	public GUIHowToPlay(JPanel contentPane) {
 		setBackground(Color.LIGHT_GRAY);
 		this.contentPane = contentPane;
-		//setBackground(Color.LIGHT_GRAY);
 		initUI();
 	}
 
@@ -35,7 +34,7 @@ public class GUIHowToPlay extends JPanel implements ActionListener{
 		txtrMinesweeperProgramHas.setBackground(Color.LIGHT_GRAY);
 		txtrMinesweeperProgramHas.setFont(new Font("Nanum Myeongjo", Font.PLAIN, 15));
 		txtrMinesweeperProgramHas.setText("Minesweeper program has 3 steps, Beginner, Intermediate, Advanced. \nEach box can contain numbers, spaces, and mines. \nWhen you choose a mine, the game ends with your lose. \nThe goal is to click on the rest except for land mines, \nand if you think you have a land mine, you can flag it up. \nSince there are a number of land mines in the remaining blanks \nsurrounding the numbers displayed above the boxes you clicked on, \nyou have to guess them along with the surrounding numbers. \nIf you find all the blanks except mines, the game ends with your wins.");
-		txtrMinesweeperProgramHas.setBounds(17, 72, 476, 169);
+		txtrMinesweeperProgramHas.setBounds(16, 82, 476, 174);
 		add(txtrMinesweeperProgramHas);
 		
 		JLabel lblNewLabel_1 = new JLabel("");

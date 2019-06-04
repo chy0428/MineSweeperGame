@@ -24,7 +24,6 @@ public class GUIMainMenu extends JPanel implements ActionListener{
 	
 	JPanel contentPane;
 	private final JLayeredPane layeredPane = new JLayeredPane();
-	private JLabel lblNewLabel_2;
 	
 	public GUIMainMenu(JPanel contentPane) {
 		this.contentPane = contentPane;
@@ -61,27 +60,22 @@ public class GUIMainMenu extends JPanel implements ActionListener{
 		btnHowToPlay.addActionListener(this);
 		btnRanking.addActionListener(this);
 		btnExit.addActionListener(this);
+		
+		lblNewLabel = new JLabel("Mine Sweeper Game");
+		lblNewLabel.setBounds(0, 0, 500, 126);
+		add(lblNewLabel);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 36));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		layeredPane.setBounds(0, 0, 500, 500);
 		add(layeredPane);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setVerticalAlignment(SwingConstants.BOTTOM);
 		setOpaque(true);
-		lblNewLabel_1.setIcon(new ImageIcon("/Users/hayeong/Documents/581360245.78.png"));
-		lblNewLabel_1.setBounds(-10, 0, 510, 559);
+		lblNewLabel_1.setIcon(new ImageIcon("/Users/hayeong/eclipse-workspace/JavaProject/MineSweeper.jpeg"));
+		lblNewLabel_1.setBounds(-115, -99, 649, 616);
 		layeredPane.add(lblNewLabel_1);
-		
-		lblNewLabel = new JLabel("Mine Sweeper Game");
-		lblNewLabel.setBounds(48, 6, 392, 56);
-		layeredPane.add(lblNewLabel);
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 36));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setBackground(Color.BLACK);
-		lblNewLabel_2.setVerticalAlignment(SwingConstants.TOP);
-		lblNewLabel_2.setOpaque(true);
-		lblNewLabel_2.setBounds(48, 55, 500, 500);
-		layeredPane.add(lblNewLabel_2);
 	}
 	
 	public void actionPerformed(ActionEvent evt) {
@@ -97,7 +91,6 @@ public class GUIMainMenu extends JPanel implements ActionListener{
 	    	System.out.println("HowToPlay!");
 	    	
 	    }else if (src == btnRanking) { //Ranking 프레임으로 변경
-	    	
 	    	CardLayout cardLayout = (CardLayout) contentPane.getLayout();
             cardLayout.show(contentPane, "Ranking");
 	    	System.out.println("Ranking");

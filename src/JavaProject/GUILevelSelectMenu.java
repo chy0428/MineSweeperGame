@@ -12,6 +12,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.JLayeredPane;
+import javax.swing.ImageIcon;
 
 public class GUILevelSelectMenu extends JPanel implements ActionListener{
    JButton btnBeginner;
@@ -21,6 +23,8 @@ public class GUILevelSelectMenu extends JPanel implements ActionListener{
    JButton btnBack;
    GUIBoard BoardPanel;
    private JLabel label;
+   private JLayeredPane layeredPane;
+   private JLabel lblNewLabel;
    public GUILevelSelectMenu(JPanel contentPane) {
    	setBackground(Color.LIGHT_GRAY);
       this.contentPane = contentPane;
@@ -57,10 +61,20 @@ public class GUILevelSelectMenu extends JPanel implements ActionListener{
       btnBack.addActionListener(this);
       
       label = new JLabel("Select Level");
+      label.setForeground(Color.WHITE);
       label.setHorizontalAlignment(SwingConstants.CENTER);
-      label.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 34));
-      label.setBounds(113, 61, 273, 49);
+      label.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 39));
+      label.setBounds(0, 0, 500, 151);
       add(label);
+      
+      layeredPane = new JLayeredPane();
+      layeredPane.setBounds(0, 0, 500, 500);
+      add(layeredPane);
+      
+      lblNewLabel = new JLabel("");
+      lblNewLabel.setIcon(new ImageIcon("/Users/hayeong/eclipse-workspace/JavaProject/MineSweeper.jpeg"));
+      lblNewLabel.setBounds(-115, -99, 649, 610);
+      layeredPane.add(lblNewLabel);
       
    }
    

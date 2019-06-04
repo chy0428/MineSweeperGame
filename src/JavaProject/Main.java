@@ -8,9 +8,12 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner keyboard = new Scanner(System.in);
 		
-		System.out.println("버전을 선택하세요");
-		System.out.println("1. Command 창으로 MineSweeper 게임을 하고 싶으신가요?");
-		System.out.println("2. Graphic 창으로 MineSweeper 게임을 하고 싶으신가요?");
+		System.out.println("============ Welcome! ============\n");
+		System.out.println("     This is Mine Sweeper Game    \n");
+		System.out.println("1. Command User Interface Version ");
+		System.out.println("2. Graphic User Interface Version \n");
+		System.out.println("==================================\n");
+		System.out.print("Selet version > ");
 		int choose = keyboard.nextInt();
 		
 		if(choose == 1) {

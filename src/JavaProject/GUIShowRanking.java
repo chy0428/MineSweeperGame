@@ -17,6 +17,7 @@ public class GUIShowRanking extends JPanel implements ActionListener {
    int level;
       
    public GUIShowRanking(JPanel contentpane , int level) {
+   	setBackground(Color.LIGHT_GRAY);
       this.contentPane = contentpane;
       this.level = level;
       if (level == 1) {levels = "beginner";}
@@ -50,8 +51,9 @@ public class GUIShowRanking extends JPanel implements ActionListener {
       }
       
       lblNewLabel = new JLabel(levels + " Top 3 Score");
+      lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 25));
       lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-      lblNewLabel.setBounds(170, 128, 157, 16);
+      lblNewLabel.setBounds(105, 131, 288, 72);
       add(lblNewLabel);
       
       for (int k = 0; k < i; k++) {
@@ -65,11 +67,13 @@ public class GUIShowRanking extends JPanel implements ActionListener {
      
       
       btnBack = new JButton("Back");
-      btnBack.setBounds(190, 231, 117, 29);
+      btnBack.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+      btnBack.setBounds(177, 235, 137, 49);
       add(btnBack);
       
       btnMenu = new JButton("Menu");
-      btnMenu.setBounds(190, 292, 117, 29);
+      btnMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+      btnMenu.setBounds(177, 296, 137, 49);
       add(btnMenu);
       
       //testIO.addActionListener(this);

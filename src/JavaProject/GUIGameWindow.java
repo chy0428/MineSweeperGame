@@ -20,13 +20,14 @@ public class GUIGameWindow extends JFrame{
 	private GUIHowToPlay manualPanel;//manual 보여줄것  
 	
 	private JLabel statusbar;
+	
+	//panel 
 	public GUIGameWindow() {
 		
 		mainPanel = new GUIMainMenu(contentPane);
 		mainPanel.setBackground(Color.DARK_GRAY);
 		LSMPanel = new GUILevelSelectMenu(contentPane);
 		manualPanel = new GUIHowToPlay(contentPane);
-		
 		
 		contentPane.setLayout(new CardLayout());
 		contentPane.add(mainPanel, "Main");
@@ -36,16 +37,13 @@ public class GUIGameWindow extends JFrame{
 		contentPane.add(rnkPanel, "Ranking"); //Ranking 표시를 위한 선언 3
 		
 		initUI();
-		
 	}
 	
 	private void initUI() {
-		
 		setPreferredSize(new Dimension(500, 500));
 
         statusbar = new JLabel("");
         getContentPane().add(statusbar, BorderLayout.SOUTH);
-
         getContentPane().add(contentPane);
 
         setResizable(true);
@@ -57,11 +55,8 @@ public class GUIGameWindow extends JFrame{
     }
 	
 	public static void main(String[] args) {
-
         EventQueue.invokeLater(() -> {
-
             GUIGameWindow ex = new GUIGameWindow();
-            
             ex.setVisible(true);
         });
     }

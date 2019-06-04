@@ -6,10 +6,11 @@ import java.util.*;
 
 public class GUIBoard implements ActionListener { 
 
-    JFrame frame = new JFrame("== Mine Sweeper Game =="); //프레임 위에 표시  
-   // JButton reset = new JButton("> REPLAY <");
-    JButton reset = new JButton("> REPLAY <"); 	//리플레이 가능   
-    JButton[][] buttons ; 
+    JFrame frame = new JFrame("== Mine Sweeper Game =="); 
+  
+    JButton reset = new JButton("REPLAY");   
+    JButton[][] buttons ;
+
     JButton[] flags;
     int[][] counts;
     Container grid = new Container(); 
@@ -20,9 +21,9 @@ public class GUIBoard implements ActionListener {
     
     private long start_time;
     private long end_time;
-//
+
     public GUIBoard(int level) { 
-     
+     this.level = level;
      MineLevel(level);
      frame.setSize(500, 500); 
      frame.setLayout(new BorderLayout()); 
@@ -35,18 +36,21 @@ public class GUIBoard implements ActionListener {
      //Grid of Buttons 
      
      for (int a = 0; a<buttons.length; a++) { 
-    	 for (int b = 0; b < buttons[0].length; b++) { 
-    		 buttons[a][b] = new JButton("▩"); //처음에 보여지는 지뢰 (이미지로 바꾸면 좋을듯 )  
-    		 buttons[a][b].addActionListener(this); 
-    		 buttons[a][b].addMouseListener(new MouseAdapter() { 
-    		@Override 
+        for (int b = 0; b < buttons[0].length; b++) { 
+           buttons[a][b] = new JButton("▩"); 
+           buttons[a][b].addActionListener(this); 
+           final int finalB = b;
+             final int finalA = a;
+             buttons[a][b].addMouseListener(new MouseAdapter() {
+                 @Override
         
         public void mousePressed(MouseEvent e) { 
-         if (e.getButton() == MouseEvent.BUTTON3) { //오른쪽 마우스 버튼 
-          mineFlagger(true); 
-         } 
-        } 
-       }); 
+                    if (SwingUtilities.isRightMouseButton(e)) { 
+                         mineFlagger(finalA, finalB); 
+            } 
+         }
+       }
+       );
        grid.add(buttons[a][b]); 
       } 
      } 
@@ -56,55 +60,52 @@ public class GUIBoard implements ActionListener {
      frame.setVisible(true); 
     } 
     
-    public void MineLevel(int level) { // 새로 추가
-    	if(level ==1) {
-    		num = 10;
-    		MineNum = 10;
-    		grid.setLayout(new GridLayout(10,10)); 
-    	}else if(level == 2) {
-    		num = 15;
-    		MineNum = 25;
-    		grid.setLayout(new GridLayout(15,15)); 
-    	}else if(level == 3) {
-    		num = 20;
-    		MineNum = 40;
-    		grid.setLayout(new GridLayout(20,20)); 
-    	}
-    	buttons = new JButton[num][num];
-		flags = new JButton[num]; 
-		counts = new int[num][num]; 
+    public void MineLevel(int level) { 
+       if(level ==1) {
+          num = 10;
+          MineNum = 10;
+          grid.setLayout(new GridLayout(10,10)); 
+       }else if(level == 2) {
+          num = 15;
+          MineNum = 25;
+          grid.setLayout(new GridLayout(15,15)); 
+       }else if(level == 3) {
+          num = 20;
+          MineNum = 40;
+          grid.setLayout(new GridLayout(20,20)); 
+       }
+       buttons = new JButton[num][num];
+      flags = new JButton[num]; 
+      counts = new int[num][num]; 
     }
     
-    public void setCount(int num) { // 새로 추가
-    	counts = new int[num][num]; 
+    public void setCount(int num) { 
+       counts = new int[num][num]; 
     }
         
-    public void mineFlagger (boolean flag){ 
-     for (int i = 0; i < buttons.length; i++) { 
-      for (int j = 0; j < buttons[0].length; j++) { 
-       if(flag == true) { 
-        buttons[i][j].setText("F"); 
-       } 
-      } 
-     } 
+    public void mineFlagger(int x, int y) { 
+        if(buttons[x][y].getText().equals("F")) { 
+         buttons[x][y].setText("▩"); 
+        } else if (buttons[x][y].getText().equals("▩")){ 
+         buttons[x][y].setText("F"); 
+        } 
     } 
 
-    public void makeRandomMines() { 
-     //initializes list of random pairs 
+    public void makeRandomMines() {  
      ArrayList<Integer> list = new ArrayList<Integer>(); 
      for (int x = 0; x < counts.length; x++) { 
       for (int y = 0; y < counts[0].length; y++) { 
        list.add(x * 100 + y);//changed y to x 
       } 
      } 
-     //resets the counts in case reset button is pressed & picks random mines 
+     //resets
      setCount(num);
      for (int i = 0; i < MineNum; i++) { 
       int choice = (int) (Math.random() * list.size()); 
       counts[list.get(choice)/100][list.get(choice) % 100] = MINE; 
       list.remove(choice); 
      } 
-     //neighbor counts(how many mines are touching this square.) 
+     //how many mines are touching this square
      for (int x = 0; x < counts.length; x++) { 
       for (int y = 0; y < counts[0].length; y++) { 
        int neighborCount = 0; 
@@ -154,7 +155,8 @@ public class GUIBoard implements ActionListener {
        } 
       } 
      } 
-     JOptionPane.showMessageDialog(null, "You Lose!\n" + "You clicked on a mine!", "BOOM!", JOptionPane.INFORMATION_MESSAGE); 
+     //print message
+     JOptionPane.showMessageDialog(null, "You Lose!\n" + "You clicked on a mine!", "Game OVER", JOptionPane.ERROR_MESSAGE); 
      end_time = System.currentTimeMillis();
      System.out.println((float)(end_time - start_time)/1000);
     } 
@@ -169,10 +171,15 @@ public class GUIBoard implements ActionListener {
        } 
       } 
      } 
-     if (winner == true) { 
-      JOptionPane.showMessageDialog(frame, "You win!"); 
-      end_time = System.currentTimeMillis();
-      System.out.println((float)(end_time - start_time)/1000);
+     //print message
+     if (true) { 
+    	 end_time = System.currentTimeMillis();
+         JOptionPane.showMessageDialog(null, "You win!\n"+"Run time:"+(float)(end_time - start_time)/1000, "Winner", JOptionPane.INFORMATION_MESSAGE);
+         float score =(float)(end_time - start_time)/1000;
+         
+         GUIInputRanking rank = new GUIInputRanking(level,score);
+         frame.dispose();
+
      } 
     } 
 
@@ -248,13 +255,13 @@ public class GUIBoard implements ActionListener {
     public void actionPerformed(ActionEvent event) { 
      if(event.getSource().equals(reset)) { 
      //Resets the playing field 
-    	 
-    	 start_time = System.currentTimeMillis();
-    	 
+        
+        start_time = System.currentTimeMillis();
+        
       for (int x = 0; x < buttons.length; x++) { 
        for (int y = 0; y < buttons[0].length; y++) { 
         buttons[x][y].setEnabled(true); 
-        buttons[x][y].setText("▒"); 
+        buttons[x][y].setText("▩"); 
        } 
       } 
       makeRandomMines(); 
@@ -263,9 +270,12 @@ public class GUIBoard implements ActionListener {
       for (int x = 0; x < buttons.length ; x++) { 
        for (int y = 0; y < buttons[0].length; y++) { 
         if(event.getSource().equals(buttons[x][y])) { 
-         if (counts[x][y]== MINE) { 
+           if(buttons[x][y].getText().equals("F")) {  
+                buttons[x][y].setText("F");
+        }
+        else if (counts[x][y]== MINE) { 
           lostGame(); 
-         } 
+         }
          else if(counts[x][y] == 0) { 
           buttons[x][y].setText(counts[x][y]+ ""); 
           buttons[x][y].setEnabled(false); 

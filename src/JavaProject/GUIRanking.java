@@ -13,6 +13,8 @@ public class GUIRanking extends JPanel implements ActionListener{
 	JButton btnBack;
 	
 	private GUIShowRanking showRnk;
+	private JLayeredPane layeredPane;
+	private JLabel lblNewLabel_1;
 	
 	public GUIRanking(JPanel contentPane) {
 		setBackground(Color.LIGHT_GRAY);
@@ -23,12 +25,6 @@ public class GUIRanking extends JPanel implements ActionListener{
 	private void initUI() {
 		setPreferredSize(new Dimension(500, 500));
 		setLayout(null);
-		
-		lblNewLabel = new JLabel("Select Level");
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 34));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(109, 61, 273, 49);
-		add(lblNewLabel);
 		
 		btnBeginner = new JButton("Beginner");
 		btnBeginner.setFont(new Font("American Typewriter", Font.PLAIN, 16));
@@ -54,6 +50,22 @@ public class GUIRanking extends JPanel implements ActionListener{
 		btnIntermediate.addActionListener(this);
 		btnAdvanced.addActionListener(this);
 		btnBack.addActionListener(this);
+		
+		lblNewLabel = new JLabel("Select Ranking");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(0, 0, 502, 141);
+		add(lblNewLabel);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 39));
+		
+		layeredPane = new JLayeredPane();
+		layeredPane.setBounds(0, 0, 500, 500);
+		add(layeredPane);
+		
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("/Users/hayeong/eclipse-workspace/JavaProject/MineSweeper.jpeg"));
+		lblNewLabel_1.setBounds(-115, -99, 649, 616);
+		layeredPane.add(lblNewLabel_1);
 	}
 	
 	public void actionPerformed(ActionEvent evt) {

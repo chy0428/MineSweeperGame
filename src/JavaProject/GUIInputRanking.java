@@ -5,11 +5,11 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class GUIInputRanking implements ActionListener{
-   JFrame frame = new JFrame("== Input Username ==");
+   JFrame frame = new JFrame("== Register Ranking ==");
 
+   int levels;
    float scores;
    String users;
-   int levels;
    JTextField userText;
    JButton btnNewButton;
    
@@ -37,15 +37,12 @@ public class GUIInputRanking implements ActionListener{
    }
    
    public void actionPerformed(ActionEvent evt) {
-
       Object src = evt.getSource();
-      
       if (src == btnNewButton) {
          users = userText.getText();
          GUIScoreIO sc = new GUIScoreIO(levels);
          sc.saveScore(sc.fileRead(), users, scores);
          frame.dispose();
-
       }
    }
 }
