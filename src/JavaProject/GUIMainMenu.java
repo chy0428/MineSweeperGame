@@ -10,6 +10,9 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+import javax.swing.JLayeredPane;
+import javax.swing.ImageIcon;
 
 public class GUIMainMenu extends JPanel implements ActionListener{
 	
@@ -20,6 +23,8 @@ public class GUIMainMenu extends JPanel implements ActionListener{
 	JButton btnExit;
 	
 	JPanel contentPane;
+	private final JLayeredPane layeredPane = new JLayeredPane();
+	private JLabel lblNewLabel_2;
 	
 	public GUIMainMenu(JPanel contentPane) {
 		this.contentPane = contentPane;
@@ -31,32 +36,52 @@ public class GUIMainMenu extends JPanel implements ActionListener{
 		setPreferredSize(new Dimension(500, 500));
 		setLayout(null);
 		
-		lblNewLabel = new JLabel("Mine Sweeper");
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(193, 60, 111, 30);
-		add(lblNewLabel);
-		
 		btnGameStart = new JButton("Game Start");
-		btnGameStart.setBounds(193, 140, 117, 29);
+		btnGameStart.setFont(new Font("American Typewriter", Font.PLAIN, 16));
+		btnGameStart.setBounds(169, 154, 153, 49);
 		add(btnGameStart);
 		
 		btnHowToPlay = new JButton("How To Play");
-		btnHowToPlay.setBounds(193, 196, 117, 29);
+		btnHowToPlay.setFont(new Font("American Typewriter", Font.PLAIN, 16));
+		btnHowToPlay.setBounds(169, 225, 153, 49);
 		add(btnHowToPlay);
 		
 		btnRanking = new JButton("Ranking");
-		btnRanking.setBounds(193, 258, 117, 29);
+		btnRanking.setFont(new Font("American Typewriter", Font.PLAIN, 16));
+		btnRanking.setBounds(169, 297, 153, 49);
 		add(btnRanking);
 		
 		btnExit = new JButton("Exit");
-		btnExit.setBounds(193, 324, 117, 29);
+		btnExit.setFont(new Font("American Typewriter", Font.PLAIN, 16));
+		btnExit.setForeground(new Color(0, 0, 0));
+		btnExit.setBounds(169, 368, 153, 49);
 		add(btnExit);
 		
 		btnGameStart.addActionListener(this);
 		btnHowToPlay.addActionListener(this);
 		btnRanking.addActionListener(this);
 		btnExit.addActionListener(this);
+		layeredPane.setBounds(0, 0, 500, 500);
+		add(layeredPane);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		setOpaque(true);
+		lblNewLabel_1.setIcon(new ImageIcon("/Users/hayeong/Documents/581360245.78.png"));
+		lblNewLabel_1.setBounds(-10, 0, 510, 559);
+		layeredPane.add(lblNewLabel_1);
+		
+		lblNewLabel = new JLabel("Mine Sweeper Game");
+		lblNewLabel.setBounds(48, 6, 392, 56);
+		layeredPane.add(lblNewLabel);
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 36));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBackground(Color.BLACK);
+		lblNewLabel_2.setVerticalAlignment(SwingConstants.TOP);
+		lblNewLabel_2.setOpaque(true);
+		lblNewLabel_2.setBounds(48, 55, 500, 500);
+		layeredPane.add(lblNewLabel_2);
 	}
 	
 	public void actionPerformed(ActionEvent evt) {

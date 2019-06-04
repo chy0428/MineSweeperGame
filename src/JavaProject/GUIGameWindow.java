@@ -8,6 +8,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.Color;
 
 public class GUIGameWindow extends JFrame{
 	
@@ -22,16 +23,17 @@ public class GUIGameWindow extends JFrame{
 	public GUIGameWindow() {
 		
 		mainPanel = new GUIMainMenu(contentPane);
+		mainPanel.setBackground(Color.DARK_GRAY);
 		LSMPanel = new GUILevelSelectMenu(contentPane);
-		rnkPanel = new GUIRanking(contentPane);//Ranking 표시를 위한 선언 2
 		manualPanel = new GUIHowToPlay(contentPane);
 		
 		
 		contentPane.setLayout(new CardLayout());
 		contentPane.add(mainPanel, "Main");
 		contentPane.add(LSMPanel, "LevelSelect");
-		contentPane.add(rnkPanel, "Ranking"); //Ranking 표시를 위한 선언 3
 		contentPane.add(manualPanel, "HowToPlay");
+		rnkPanel = new GUIRanking(contentPane);//Ranking 표시를 위한 선언 2
+		contentPane.add(rnkPanel, "Ranking"); //Ranking 표시를 위한 선언 3
 		
 		initUI();
 		

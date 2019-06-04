@@ -9,10 +9,7 @@ public class GUIBoard implements ActionListener {
     JFrame frame = new JFrame("== Mine Sweeper Game =="); //프레임 위에 표시  
    // JButton reset = new JButton("> REPLAY <");
     JButton reset = new JButton("> REPLAY <"); 	//리플레이 가능   
-    JButton[][] buttons ;
-//    JButton[][] button1 = new JButton[10][10];//초급
-//    JButton[][] button2 = new JButton[20][20];//중급  
-//    JButton[][] button3 = new JButton[30][30];//고급  
+    JButton[][] buttons ; 
     JButton[] flags;
     int[][] counts;
     Container grid = new Container(); 

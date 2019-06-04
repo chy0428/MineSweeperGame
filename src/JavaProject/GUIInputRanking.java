@@ -4,51 +4,48 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class GUIInputRanking extends JPanel implements ActionListener{
-   JPanel contentPane;
-   JButton btnInput;
+public class GUIInputRanking implements ActionListener{
+   JFrame frame = new JFrame("== Input Username ==");
+
    float scores;
    String users;
    int levels;
    JTextField userText;
+   JButton btnNewButton;
    
-   public GUIInputRanking(JPanel contentpane, int levels, float score) {
-      this.contentPane = contentpane;
+   public GUIInputRanking(int levels, float score) {
       this.scores = score;
       this.levels = levels;
       initUI();
+      frame.setSize(500, 500);
+      frame.setLocationRelativeTo(null);
    }
    
+      
    public void initUI() {
-      
-      setPreferredSize(new Dimension(500, 500));
-      setLayout(null);
-      
+      frame.getContentPane().setLayout(null);
+   
       userText = new JTextField(16);
+      userText.setBounds(100, 150, 120, 30);
+      frame.getContentPane().add(userText);
       
-      userText.setBounds(190,199,117,29);
-      add(userText);
-      
-      btnInput = new JButton ("Test");
-      btnInput.setBounds(190, 266, 117, 29);
-      add(btnInput);
-      
-      btnInput.addActionListener(this);
+      btnNewButton = new JButton("Enter");
+      btnNewButton.setBounds(250, 150, 70, 30);
+      frame.getContentPane().add(btnNewButton);
+      frame.setVisible(true);
+      btnNewButton.addActionListener(this);
    }
    
    public void actionPerformed(ActionEvent evt) {
-      GUIRanking showBack = new GUIRanking(contentPane);
-       contentPane.add(showBack, "levels");
-       
+
       Object src = evt.getSource();
       
-      if (src == btnInput) {
+      if (src == btnNewButton) {
          users = userText.getText();
          GUIScoreIO sc = new GUIScoreIO(levels);
          sc.saveScore(sc.fileRead(), users, scores);
-         
-         CardLayout cardLayout = (CardLayout) contentPane.getLayout();
-           cardLayout.show(contentPane, "levels");
+         frame.dispose();
+
       }
    }
 }

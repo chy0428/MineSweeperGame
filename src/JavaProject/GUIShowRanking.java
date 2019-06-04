@@ -62,11 +62,7 @@ public class GUIShowRanking extends JPanel implements ActionListener {
       
       setPreferredSize(new Dimension(500, 500));
       setLayout(null);
-      
-      //�뒪肄붿뼱 �엯�젰 �뀒�뒪�듃�슜
-      //testIO = new JButton("testIO");
-      //testIO.setBounds(190,176,117,29);
-      //add(testIO);
+     
       
       btnBack = new JButton("Back");
       btnBack.setBounds(190, 231, 117, 29);

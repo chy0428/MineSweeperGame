@@ -15,6 +15,7 @@ public class GUIRanking extends JPanel implements ActionListener{
 	private GUIShowRanking showRnk;
 	
 	public GUIRanking(JPanel contentPane) {
+		setBackground(Color.LIGHT_GRAY);
 		this.contentPane = contentPane;
 		initUI();
 	}
@@ -24,24 +25,29 @@ public class GUIRanking extends JPanel implements ActionListener{
 		setLayout(null);
 		
 		lblNewLabel = new JLabel("Select Level");
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 34));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(189, 119, 117, 16);
+		lblNewLabel.setBounds(109, 61, 273, 49);
 		add(lblNewLabel);
 		
 		btnBeginner = new JButton("Beginner");
-		btnBeginner.setBounds(189, 166, 117, 29);
+		btnBeginner.setFont(new Font("American Typewriter", Font.PLAIN, 16));
+		btnBeginner.setBounds(169, 154, 153, 49);
 		add(btnBeginner);
 		
 		btnIntermediate = new JButton("Intermediate");
-		btnIntermediate.setBounds(189, 221, 117, 29);
+		btnIntermediate.setFont(new Font("American Typewriter", Font.PLAIN, 16));
+		btnIntermediate.setBounds(169, 225, 153, 49);
 		add(btnIntermediate);
 		
 		btnAdvanced = new JButton("Advanced");
-		btnAdvanced.setBounds(189, 272, 117, 29);
+		btnAdvanced.setFont(new Font("American Typewriter", Font.PLAIN, 16));
+		btnAdvanced.setBounds(169, 297, 153, 49);
 		add(btnAdvanced);
 		
 		btnBack = new JButton("Back");
-		btnBack.setBounds(189, 321, 117, 29);
+		btnBack.setFont(new Font("American Typewriter", Font.PLAIN, 16));
+		btnBack.setBounds(169, 368, 153, 49);
 		add(btnBack);
 		
 		btnBeginner.addActionListener(this);
