@@ -1,6 +1,8 @@
 # MineSweeperGame
+Mine sweeper game (java)
 
-Java project
+## 게임
+> Command User Interface와 Graphic User Interface 모두 지원
 
-지뢰찾기게임 (GUI구현)
+
 
