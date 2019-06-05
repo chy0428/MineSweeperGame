@@ -1,4 +1,5 @@
 package JavaProject;
+import javax.imageio.ImageIO;
 import javax.swing.*; 
 import java.awt.*; 
 import java.awt.event.*;
@@ -9,8 +10,15 @@ public class GUIBoard implements ActionListener {
     JFrame frame = new JFrame("== Mine Sweeper Game =="); 
   
     JButton reset = new JButton("REPLAY");   
-    JButton[][] buttons ;
-
+    
+/*지뢰판 이미지 넣기*/ 
+//    ImageIcon none = new ImageIcon("/Users/hayeong/Downloads/image/0.png");
+//    ImageIcon img1 = new ImageIcon("/Users/hayeong/Downloads/image/1.png");
+//    ImageIcon mine = new ImageIcon("/Users/hayeong/Downloads/image/9.png");//지뢰  
+//    ImageIcon flag = new ImageIcon("/Users/hayeong/Downloads/image/11.png");//플래그  
+    
+    JButton[][] buttons;
+    
     JButton[] flags;
     int[][] counts;
     Container grid = new Container(); 
@@ -37,7 +45,9 @@ public class GUIBoard implements ActionListener {
      
      for (int a = 0; a<buttons.length; a++) { 
         for (int b = 0; b < buttons[0].length; b++) { 
-           buttons[a][b] = new JButton("▩"); 
+           buttons[a][b] = new JButton("▩");
+           
+           //buttons[a][b].setIcon(test);
            buttons[a][b].addActionListener(this); 
            final int finalB = b;
              final int finalA = a;
@@ -75,6 +85,7 @@ public class GUIBoard implements ActionListener {
           grid.setLayout(new GridLayout(20,20)); 
        }
        buttons = new JButton[num][num];
+
       flags = new JButton[num]; 
       counts = new int[num][num]; 
     }
@@ -149,7 +160,9 @@ public class GUIBoard implements ActionListener {
          buttons[x][y].setEnabled(false); 
         } 
         else { 
-         buttons[x][y].setText("X"); 
+        	//buttons[x][y].setIcon(mine);
+         buttons[x][y].setText("X");
+         
          buttons[x][y].setEnabled(false); 
         } 
        } 
@@ -172,9 +185,10 @@ public class GUIBoard implements ActionListener {
       } 
      } 
      //print message
-     if (true) { 
+     if (winner == true) { 
+    	 ImageIcon icon = new ImageIcon("/Users/hayeong/eclipse-workspace/JavaProject/winner2.png");
     	 end_time = System.currentTimeMillis();
-         JOptionPane.showMessageDialog(null, "You win!\n"+"Run time:"+(float)(end_time - start_time)/1000, "Winner", JOptionPane.INFORMATION_MESSAGE);
+         JOptionPane.showMessageDialog(null, "You win!\n"+"Run time:"+(float)(end_time - start_time)/1000, "Winner", JOptionPane.INFORMATION_MESSAGE, icon);
          float score =(float)(end_time - start_time)/1000;
          
          GUIInputRanking rank = new GUIInputRanking(level,score);
@@ -204,6 +218,7 @@ public class GUIBoard implements ActionListener {
        if (counts[x][y - 1] == 0) { 
         toClear.add(x * 100+(y - 1)); 
        } 
+       
       } 
       if (x < counts.length - 1 && y > 0 && buttons[x+1][y-1].isEnabled()) { //up right 
        buttons[x + 1][y - 1].setText(counts[x+1][y-1] + ""); 

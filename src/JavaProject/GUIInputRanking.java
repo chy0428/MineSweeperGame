@@ -12,7 +12,6 @@ public class GUIInputRanking extends JPanel implements ActionListener{
    String users;
    JTextField userText;
    JButton btnNewButton;
-   private JButton btnExit;
    private JPanel contentPane;
 	
    public GUIInputRanking(int levels, float score) {
@@ -32,8 +31,9 @@ public class GUIInputRanking extends JPanel implements ActionListener{
       frame.getContentPane().add(userText);
       
       btnNewButton = new JButton("Register");
+      btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
       btnNewButton.setBackground(SystemColor.textHighlight);
-      btnNewButton.setBounds(281, 290, 117, 31);
+      btnNewButton.setBounds(281, 290, 117, 58);
       frame.getContentPane().add(btnNewButton);
       
       JLabel lblNewLabel = new JLabel("Winner!");
@@ -45,18 +45,6 @@ public class GUIInputRanking extends JPanel implements ActionListener{
       lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
       lblNewLabel_1.setBounds(92, 238, 325, 27);
       frame.getContentPane().add(lblNewLabel_1);
-      
-      btnExit = new JButton("Exit");
-      btnExit.addMouseListener(new MouseAdapter() {
-      	@Override
-      	public void mouseClicked(MouseEvent e) {
-			CardLayout cardLayout = (CardLayout) contentPane.getLayout();
-            cardLayout.show(contentPane, "Main");
-      	}
-      });
-			
-      btnExit.setBounds(281, 319, 117, 29);
-      frame.getContentPane().add(btnExit);
       frame.setVisible(true);
       btnNewButton.addActionListener(this);
    }
@@ -69,9 +57,5 @@ public class GUIInputRanking extends JPanel implements ActionListener{
          sc.saveScore(sc.fileRead(), users, scores);
          frame.dispose();
       }
-	if (src == btnExit) {
-			CardLayout cardLayout = (CardLayout) contentPane.getLayout();
-	        cardLayout.show(contentPane, "Main");
-		}
-	}	
+   }
 }
